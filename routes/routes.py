@@ -29,3 +29,7 @@ def query_api():
         return jsonify({'error': 'No query provided'}), 400
     result = handle_query(query)
     return jsonify(result)
+
+@api_routes.route('/', methods=['GET'])
+def queryDemo():
+    return  jsonify("hello")
