@@ -1,7 +1,8 @@
 from PyPDF2 import PdfReader
+from services import gptService
 from services import vectorStorageService
 from utils.text_chunk import chunk_text
-from services import llmService,text_service
+from services import text_service
 from typing_extensions import Concatenate
 from langchain.text_splitter import CharacterTextSplitter
 
@@ -22,7 +23,7 @@ def handle_pdf(pdf_file):
 )
     texts = text_splitter.split_text(raw_text)
         
-    chunks = chunk_text(raw_text)
+#    chunks = chunk_text(raw_text)
     vectorStorageService.embed_chunks_and_upload_to_pinecone(texts, PINECONE_INDEX_NAME)
     response_json = {
         "message": "Chunks embedded and stored successfully"

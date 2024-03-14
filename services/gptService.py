@@ -10,9 +10,9 @@ load_dotenv()
 OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
 openai_client = OpenAI(api_key=OPENAI_API_KEY)
 
-OPENAI_EMBEDDING_MODEL = 'text-embedding-ada-002'
-PROMPT_LIMIT = 3750
-CHATGPT_MODEL = 'gpt-4-1106-preview'
+OPENAI_EMBEDDING_MODEL = 'text-embedding-3-large'
+PROMPT_LIMIT = 3072
+CHATGPT_MODEL = 'gpt-3.5-turbo'
 
 def get_embedding(chunk):
   url = 'https://api.openai.com/v1/embeddings'
@@ -26,10 +26,11 @@ def get_embedding(chunk):
   }
   response = requests.post(url, headers=headers, data=json.dumps(data))  
   response_json = response.json()
-  embedding = response_json["data"][0]["embedding"]
+  embedding = response_json["data"][0]
+  print(embedding)
   return embedding
 
-def get_ans_from_llm(prompt):
+def get_llm_answer(prompt):
   messages = [{"role": "system", "content": "You are a professor who answers all the question."}]
   messages.append({"role": "user", "content": prompt})
 
@@ -46,5 +47,6 @@ def get_ans_from_llm(prompt):
   }
   response = requests.post(url, headers=headers, data=json.dumps(data))
   response_json = response.json()
+  print(response_json)
   completion = response_json["choices"][0]["message"]["content"]
   return completion

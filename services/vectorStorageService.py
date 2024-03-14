@@ -1,6 +1,8 @@
 import os
 from pinecone import Pinecone, Index, ServerlessSpec
-from services.geminiService import get_embedding
+#from services.geminiService import get_embedding
+from services.gptService import get_embedding
+
 import json
 
 from dotenv import load_dotenv
@@ -12,7 +14,11 @@ print(PINECONE_API_KEY)
 pinecone_client = Pinecone(api_key=PINECONE_API_KEY,environment='gcp-starter')
 
 
-EMBEDDING_DIMENSION = 768
+#EMBEDDING_DIMENSION = 768
+#EMBEDDING_DIMENSION = 1536
+EMBEDDING_DIMENSION = 3072
+
+
 
 def embed_chunks_and_upload_to_pinecone(chunks, index_name):
     print(index_name)

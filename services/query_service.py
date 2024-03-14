@@ -1,7 +1,9 @@
 from flask import request, jsonify
 from services.vectorStorageService import get_most_similar_chunks_for_query
 from utils.prompt_template import build_prompt
-from services.geminiService import get_llm_answer
+#from services.geminiService import get_llm_answer
+from services.gptService import get_llm_answer
+
 
 
 PINECONE_INDEX_NAME = 'llm'
