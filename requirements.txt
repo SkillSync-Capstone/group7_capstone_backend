@@ -1,2 +1,12 @@
-Flask
+flask
+requests
+beautifulsoup4
+openai
+pinecone-client
+flask-cors
 python-dotenv
+google-generativeai
+langchain
+langchain_google_genai
+Ipython
+PyPDF2
