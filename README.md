@@ -1,7 +1,7 @@
 # group7_capstone_backend
 backend for capstone project
 
-
+pip install -r requirements.txt
 
 
 Run project usin python app.py

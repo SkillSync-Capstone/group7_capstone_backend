@@ -15,7 +15,7 @@ def process_url(url):
         soup = BeautifulSoup(response.text, 'html.parser')
         texts = soup.find_all('p')
         extracted_text = ' '.join([text.get_text() for text in texts])
-
+        print("text from url",extracted_text)
         chunks = chunk_text(extracted_text)
         vectorStorageService.embed_chunks_and_upload_to_pinecone(chunks, PINECONE_INDEX_NAME)
         response_json = {
